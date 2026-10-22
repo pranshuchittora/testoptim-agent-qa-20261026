@@ -1,0 +1,10 @@
+# Sites that answer automated checkers with 403 or 429 but work in a browser.
+# Each was checked by hand when it was added.
+exclude = [
+  "^https://www\\.reddit\\.com/",
+]
+
+max_retries = 3
+timeout = 30
+accept = ["200..=299", "429"]
+user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"

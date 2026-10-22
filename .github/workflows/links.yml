@@ -1,0 +1,33 @@
+name: Links
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    # Weekly, so dead links and shut-down products are caught between pull requests.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --config lychee.toml readme.md contributing.md
+          fail: ${{ github.event_name != 'schedule' }}
+      - name: Open an issue for the weekly run's broken links
+        if: github.event_name == 'schedule' && steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Broken links found by the weekly check
+          content-filepath: ./lychee/out.md
+          labels: broken-links
