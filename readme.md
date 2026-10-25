@@ -26,6 +26,7 @@ AI now explores apps, writes tests, repairs broken locators and checks the outpu
 
 Platforms where an agent explores an app, or works from a goal, then produces or runs tests.
 
+- [agent-qa](https://vostride.com) - Runs plain-language tests for web, Android, and iOS through CLI and MCP, with persistent memory and validated self-improvement.
 - [AnyTest](https://anytest.dev/) - Agents explore a URL and leave end-to-end tests for review.
 - [Autosana](https://autosana.ai/) - Natural-language end-to-end tests for mobile and web, built to work alongside coding agents.
 - [Detektra](https://detektra.ai/) - Autonomous QA agent that tests user journeys starting from a URL.
